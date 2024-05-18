@@ -18,4 +18,5 @@ public class UserProcedure {
     @ManyToOne
     @JoinColumn(name = "procedure_id")
     private Procedure procedure;
+
 }

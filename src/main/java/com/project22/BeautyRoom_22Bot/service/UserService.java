@@ -7,6 +7,7 @@ import com.project22.BeautyRoom_22Bot.sender.BotSender;
 import com.vdurmont.emoji.EmojiParser;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.*;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMarkup;
@@ -14,8 +15,7 @@ import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.InlineKe
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 @Service
 @RequiredArgsConstructor
@@ -73,5 +73,16 @@ public class UserService {
             userRepository.save(user);
         }
 
+    }
+    @Transactional(readOnly = true)
+    public Optional<User> findById(Long id){
+        return userRepository.findById(id);
+    }
+
+    @Transactional(readOnly = true)
+    public User findUserWithProcedures(Long chatId) {
+        User user = userRepository.findById(chatId).orElseThrow();
+        user.getProcedures().size();
+        return user;
     }
 }

@@ -26,6 +26,7 @@ public class TelegramBot extends TelegramLongPollingBot {
         listOfCommands.add(new BotCommand("/start", "Розпочати чат"));
         listOfCommands.add(new BotCommand("/help", "Інформація з використання боту"));
         listOfCommands.add(new BotCommand("/register", "Зареєструватися"));
+        listOfCommands.add(new BotCommand("/procedures", "Мої записи"));
         try {
             this.execute(new SetMyCommands(listOfCommands, new BotCommandScopeDefault(), null));
 

@@ -27,6 +27,11 @@ public class User {
     @NotNull
     private LocalDate registeredAt;
 
-    @OneToMany(mappedBy = "user")
-    private Set<UserProcedure> userProcedures;
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "user_procedures",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "procedure_id")
+    )
+    private Set<Procedure> procedures;
 }

@@ -21,17 +21,8 @@ public class Procedure {
     @NotNull
     private Integer price;
 
-    public void test(){
-        Procedure procedure = new Procedure();
-
-        User user = new User();
-        UserProcedure userProcedure = new UserProcedure();
-        userProcedure.setProcedure(procedure);
-        userProcedure.setUser(user);
-        UserProcedureRepository userProcedureRepository = null;
-        userProcedureRepository.save(userProcedure);
-    }
-
+    @ManyToMany(mappedBy = "procedures", fetch = FetchType.EAGER)
+    private Set<User> users;
 
 }
 
