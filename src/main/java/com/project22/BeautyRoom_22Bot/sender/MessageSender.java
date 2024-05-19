@@ -126,67 +126,35 @@ public class MessageSender {
     }
 
 
-//    public void sendPrice(long chatId){
-//        SendMessage message = new SendMessage();
-//        message.setChatId(String.valueOf(chatId));
-//        message.setText("Натисність щоб дізнатися ціну");
-//        InlineKeyboardMarkup markupInLine = new InlineKeyboardMarkup();
-//        List<List<InlineKeyboardButton>> rowsInLine = new ArrayList<>();
-//        List<InlineKeyboardButton> firstRowInLine = new ArrayList<>();
-//        List<InlineKeyboardButton> secondRowInLine = new ArrayList<>();
-//        List<InlineKeyboardButton> thirdRowInLine = new ArrayList<>();
-//        List<InlineKeyboardButton> fourthRowInLine = new ArrayList<>();
-//        List<InlineKeyboardButton> fifthRowInLine = new ArrayList<>();
-//        List<InlineKeyboardButton> sixthRowInLine = new ArrayList<>();
-//
-//        var paintButton = new InlineKeyboardButton();
-//        paintButton.setText("Фарбування брів");
-//        paintButton.setCallbackData(Constants.PAINT_BROW);
-//
-//        var lamButton = new InlineKeyboardButton();
-//        lamButton.setText("Ламінування брів");
-//        lamButton.setCallbackData(Constants.LAM_BROW);
-//
-//        var lamLButton = new InlineKeyboardButton();
-//        lamLButton.setText("Ламінування вій");
-//        lamLButton.setCallbackData(Constants.LAM_LASH);
-//
-//        var lashButton = new InlineKeyboardButton();
-//        lashButton.setText("Нарощення вій");
-//        lashButton.setCallbackData(Constants.LASH_BUTTON);
-//
-//        var muButton = new InlineKeyboardButton();
-//        muButton.setText("Макіяж");
-//        muButton.setCallbackData(Constants.MU_BUTTON);
-//
-//        var nailButton = new InlineKeyboardButton();
-//        nailButton.setText("Манікюр");
-//        nailButton.setCallbackData(Constants.NAIL_BUTTON);
-//
-//        firstRowInLine.add(paintButton);
-//        secondRowInLine.add(lamButton);
-//        thirdRowInLine.add(lamLButton);
-//        fourthRowInLine.add(lashButton);
-//        fifthRowInLine.add(muButton);
-//        sixthRowInLine.add(nailButton);
-//
-//        rowsInLine.add(firstRowInLine);
-//        rowsInLine.add(secondRowInLine);
-//        rowsInLine.add(thirdRowInLine);
-//        rowsInLine.add(fourthRowInLine);
-//        rowsInLine.add(fifthRowInLine);
-//        rowsInLine.add(sixthRowInLine);
-//
-//        markupInLine.setKeyboard(rowsInLine);
-//        message.setReplyMarkup(markupInLine);
-//
-//        try {
-//            BotSender.getInstance().execute(message);
-//
-//        }
-//        catch (TelegramApiException e){
-//            e.printStackTrace();
-//        }
-//
-//    }
+    public void sendPrice(long chatId){
+        SendMessage message = new SendMessage();
+        message.setChatId(String.valueOf(chatId));
+        message.setText("Натисність щоб дізнатися ціни");
+        InlineKeyboardMarkup markupInLine = new InlineKeyboardMarkup();
+        List<List<InlineKeyboardButton>> rowsInLine = new ArrayList<>();
+        List<InlineKeyboardButton> firstRowInLine = new ArrayList<>();
+
+        var priceButton = new InlineKeyboardButton();
+        priceButton.setText("Дізнатися");
+        priceButton.setCallbackData(Constants.PRICE);
+
+        firstRowInLine.add(priceButton);
+
+        rowsInLine.add(firstRowInLine);
+
+        markupInLine.setKeyboard(rowsInLine);
+        message.setReplyMarkup(markupInLine);
+
+
+        try {
+            BotSender.getInstance().execute(message);
+
+        }
+        catch (TelegramApiException e){
+            e.printStackTrace();
+        }
+
+    }
+
+
 }

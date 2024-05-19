@@ -71,12 +71,24 @@ public class Handler {
                 userProcedureService.saveData(userProcedure);
                 messageSender.sendMessage(chatId, "Запис збережено");
                 break;
+
+            case Constants.PRICE:
+                text = "Ціни:";
+                messageSender.sendMessage(chatId, "Ламінування вій 500грн\n" +
+                        "Нарощення вій 700грн\n" +
+                        "Фарбування брів 250грн\n" +
+                        "Ламінування брів 450грн\n" +
+                        "Манюкюр 700грн\n" +
+                        "Макіяж 900грн");
+                messageSender.executeEditMassageText(text, chatId, messageId);
+                break;
         }
     }
 
     private void handleTextMessage(Update update) {
         String messageText = update.getMessage().getText();
         long chatId = update.getMessage().getChatId();
+
 
 
         switch (messageText) {
@@ -95,6 +107,9 @@ public class Handler {
             case "/procedures":
 
                 messageSender.sendMessage(chatId, messageSender.sendProcedures(chatId));
+                break;
+            case "/price":
+                messageSender.sendPrice(chatId);
                 break;
             default:
                 messageSender.sendMessage(chatId, "Вибачте , команди не існує");

@@ -6,7 +6,8 @@ public class Constants {
             "Можна користуватися командами з меню\n\n"+
             "/start - розпочати\n\n"+
             "/help - побачити це повідомлення знову\n\n"+
-            "/register - щоб зпреєструватися";
+            "/register - щоб зареєструватися\n\n"+
+            "/price - щоб дізнвтися вартість послуг";
 
     public static final String YES_BUTTON = "YES_BUTTON";
     public static final String NO_BUTTON = "NO_BUTTON";
